@@ -1,0 +1,84 @@
+version: '2'
+services:
+  rabbitmq1:
+    image: rabbitmq:3-management
+    container_name: rabbitmq1
+    hostname: rabbitmq1
+    ports:
+      - "8080:15672"
+    network_mode: "bridge"
+    volumes:
+     - $PWD/storage/rabbitmq1:/var/lib/rabbitmq
+    environment:
+     - RABBITMQ_ERLANG_COOKIE=This_is_my_secret_phrase
+     - RABBITMQ_DEFAULT_USER=mqadmin
+     - RABBITMQ_DEFAULT_PASS=Admin123XX_
+     - CLUSTERED=true
+ 
+  rabbitmq2:
+    image: rabbitmq:3-management
+    container_name: rabbitmq2
+    hostname: rabbitmq2
+    ports:
+      - "8081:15672"
+    network_mode: "bridge"
+    volumes:
+     - $PWD/storage/rabbitmq2:/var/lib/rabbitmq
+    environment:
+     - RABBITMQ_ERLANG_COOKIE=This_is_my_secret_phrase
+     - RABBITMQ_DEFAULT_USER=mqadmin
+     - RABBITMQ_DEFAULT_PASS=Admin123XX_
+     - CLUSTERED=true
+    links:
+     - rabbitmq1:rabbitmq1
+ 
+  rabbitmq3:
+    image: rabbitmq:3-management
+    container_name: rabbitmq3
+    hostname: rabbitmq3
+    ports:
+      - "8082:15672"
+    network_mode: "bridge"
+    volumes:
+      - $PWD/storage/rabbitmq3:/var/lib/rabbitmq
+    environment:
+     - RABBITMQ_ERLANG_COOKIE=This_is_my_secret_phrase
+     - RABBITMQ_DEFAULT_USER=mqadmin
+     - RABBITMQ_DEFAULT_PASS=Admin123XX_
+     - CLUSTERED=true
+    links:
+     - rabbitmq1:rabbitmq1
+     - rabbitmq2:rabbitmq2
+ 
+  rabbitmq4:
+    image: rabbitmq:3-management
+    container_name: rabbitmq4
+    hostname: rabbitmq4
+    ports:
+      - "8083:15672"
+    network_mode: "bridge"
+    volumes:
+      - $PWD/storage/rabbitmq4:/var/lib/rabbitmq
+    environment:
+     - RABBITMQ_ERLANG_COOKIE=This_is_my_secret_phrase
+     - RABBITMQ_DEFAULT_USER=mqadmin
+     - RABBITMQ_DEFAULT_PASS=Admin123XX_
+     - CLUSTERED=true
+    links:
+     - rabbitmq1:rabbitmq1
+     - rabbitmq2:rabbitmq2
+     - rabbitmq3:rabbitmq3
+ 
+  haproxy:
+    image: haproxy:1.6
+    container_name: haproxy
+    hostname: haproxy
+    ports:
+      - 5672:5672
+      - 20000:20000
+    network_mode: "bridge"
+    links:
+      - rabbitmq1:rabbitmq1
+      - rabbitmq2:rabbitmq2
+      - rabbitmq3:rabbitmq3
+      - rabbitmq4:rabbitmq4
