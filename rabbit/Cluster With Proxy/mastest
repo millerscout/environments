@@ -1,0 +1,2 @@
+runjava com.rabbitmq.perf.PerfTest --uri amqp://mqadmin:Admin123XX_@localhost/%2F --consumers 30 --producers 12 --autoack
+runjava com.rabbitmq.perf.PerfTest --uri amqp://mqadmin:Admin123XX_@localhost/%2F --consumers 30 -X 12 --producers 12 -Y 20 --autoack
