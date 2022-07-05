@@ -19,11 +19,16 @@
 ## Using Docker
 
 
-[PyCaret](./PyCaret)
-[kafka - confluent](./kafka - confluent)
-[kafka](./kafka)
-[rabbit/Cluster With Proxy](./rabbit/Cluster With Proxy)
-[rabbit/Default](./rabbit/Default)
+
+ - [PyCaret](./PyCaret)
+
+ - [kafka - confluent](./kafka - confluent)
+
+ - [kafka](./kafka)
+
+ - [rabbit/Cluster With Proxy](./rabbit/Cluster With Proxy)
+
+ - [rabbit/Default](./rabbit/Default)
 
 ## Using Podman
 
