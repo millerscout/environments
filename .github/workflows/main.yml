@@ -72,10 +72,10 @@ jobs:
             # echo "${T[$c,1]}"
             if [ "${T[$c,1]}" == 1 ];then
               echo "${T[$c,0]} || docker"
-              docker_content=("$docker_content\r\n[${T[$c,0]}](./${T[$c,0]})")
+              docker_content=("$docker_content\r\n\r\n - [${T[$c,0]}](./${T[$c,0]})")
             elif [ "${T[$c,1]}" == 0 ];then
               echo "${T[$c,0]} || podman"
-              podman_content=("$podman_content\r\n[${T[$c,0]}](./${T[$c,0]})")
+              podman_content=("$podman_content\r\n\r\n - [${T[$c,0]}](./${T[$c,0]})")
             fi 
           done
 
