@@ -22,7 +22,7 @@
 
  - [PyCaret](./PyCaret)
 
- - [kafka - confluent](./kafka - confluent)
+ - [kafka-confluent](./kafka-confluent)
 
  - [kafka](./kafka)
 
