@@ -32,6 +32,12 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'    
+      - name: hello world
+        run: echo "test"
       - name: Readme Replacer - Readme-Workflows
         # You may pin to the exact commit or the version.
         # uses: Readme-Workflows/readme-replacer@476f6f7ca5f3a0e7d3a55712d70227845ea3c3b6
