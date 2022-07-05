@@ -85,7 +85,8 @@ jobs:
           echo $template
           template=${template/\#Docker_Content\#/$docker_content}
           template=${template/\#Podman_Content\#/$podman_content}
-          echo $template
+          
+          echo -e "$template" > README.md
       - name: update Readme
         uses: EndBug/add-and-commit@v7
         with:
