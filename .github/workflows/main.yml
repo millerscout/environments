@@ -22,11 +22,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - uses: EndBug/add-and-commit@v7
-        with:
-          message: "Update readme.md"
-          default_author: github_actions
-          branch: master
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
@@ -77,10 +72,10 @@ jobs:
             # echo "${T[$c,1]}"
             if [ "${T[$c,1]}" == 1 ];then
               echo "${T[$c,0]} || docker"
-              docker_content=("$docker_content\r\n[${T[$c,0]}](./${T[$c,0]})")
+              docker_content=("$docker_content\r\n\r\n - [${T[$c,0]}](./${T[$c,0]})")
             elif [ "${T[$c,1]}" == 0 ];then
               echo "${T[$c,0]} || podman"
-              podman_content=("$podman_content\r\n[${T[$c,0]}](./${T[$c,0]})")
+              podman_content=("$podman_content\r\n\r\n - [${T[$c,0]}](./${T[$c,0]})")
             fi 
           done
 
@@ -90,6 +85,12 @@ jobs:
           echo $template
           template=${template/\#Docker_Content\#/$docker_content}
           template=${template/\#Podman_Content\#/$podman_content}
-          echo $template
-  
+          
+          echo -e "$template" > README.md
+      - name: update Readme
+        uses: EndBug/add-and-commit@v7
+        with:
+          message: "Update readme.md"
+          default_author: github_actions
+          branch: master
 
