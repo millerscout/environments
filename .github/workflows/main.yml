@@ -32,3 +32,26 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: Readme Replacer - Readme-Workflows
+        # You may pin to the exact commit or the version.
+        # uses: Readme-Workflows/readme-replacer@476f6f7ca5f3a0e7d3a55712d70227845ea3c3b6
+        uses: Readme-Workflows/readme-replacer@v1.0.1
+        with:
+          # Your GitHub username
+          GH_USERNAME:  ${{ github.repository_owner }}
+          # Path to template file
+          TEMPLATE_FILE: ./TEMPLATE.md
+          # Path to commit file
+          COMMIT_FILE: ./README.md
+          # Path to custom replacer file (JSON). You can select if you want to use eval or not!
+          CUSTOM_REPLACER_FILE: ./.github/customReplacer.json
+          # Format of the date/time (if date replacer used)
+          DATE_FORMAT:  dddd, mmmm dS, yyyy, h:MM:ss TT
+          # Desired timezone of the date (can be locale based of GMT offset)
+          TIMEZONE: -3
+          # Message used for committing changes
+          COMMIT_MESSAGE: Update README by replacing keywords
+          # Email used for committing changes
+          #COMMIT_EMAIL: # optional, default is 41898282+github-actions[bot]@users.noreply.github.com
+          # Name used for committing changes
+          COMMIT_NAME: replacer-bot
