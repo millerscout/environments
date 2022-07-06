@@ -2,7 +2,7 @@ version: '3'
 
 services:
   rabbitmq:
-    image: "rabbitmq:3-management"
+    image: "docker.io/library/rabbitmq:3-management"
     hostname: "rabbit"
     ports:
       - "15672:15672"
