@@ -12,16 +12,28 @@
 > This is a project to present how to build environments, using docker/podman
 
 ## Requisites
-  [Docker](https://www.docker.com/get-started/)  or  [Podman](https://podman.io/getting-started/)
+  [Docker](https://www.docker.com/get-started/)  or  [Podman](https://podman.io/getting-started/) with [podman-compose](https://github.com/containers/podman-compose)
+  
+  
   
   
 ## Using Docker
 
-#Docker_Content#
+```BASH
+ docker-compose up
+```
 
 ## Using Podman
 
-#Podman_Content#
+```BASH
+podman-compose up
+```
+
+## Environments
+
+#Docker_compose#
+
+#Docker_file#
 
 ## References
 
