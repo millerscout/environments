@@ -5,3 +5,5 @@ services:
     image: pycaret/slim
     ports:
       - 8888:8888
+    volumes:
+      - ./shared:/home/jovyan/work/

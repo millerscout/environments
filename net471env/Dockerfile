@@ -1,5 +1,6 @@
 FROM mcr.microsoft.com/dotnet/framework/sdk:4.7.2 AS build
 WORKDIR /app
+# ./shared /inetpub/wwwroot
 
 # copy csproj and restore as distinct layers
 COPY ./sample/*.sln .
@@ -13,8 +14,11 @@ RUN msbuild /p:Configuration=Release -r:False
 
 
 FROM nanoserver/iis
-WORKDIR /inetpub/wwwroot
+WORKDIR /inetpub/build
+RUN ["powershell", "Remove-Item", "C:\\inetpub\\wwwroot", "-Recurse"]
+
 COPY --from=build /app/sample/. ./
+
 
 
 # WORKDIR /app
