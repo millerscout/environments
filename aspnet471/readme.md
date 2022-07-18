@@ -1,0 +1,2 @@
+
+docker build . -t aspnetenv:latest --force-rm --no-cache & docker rm env471 & docker run --name env471 -d -it -p 801:80 --mount type=bind,source="D:\projects\environments\net471env/shared",destination=c:\inetpub\wwwroot aspnetenv:latest

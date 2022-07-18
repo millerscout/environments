@@ -12,12 +12,11 @@
 # # WORKDIR /app/sample
 # RUN msbuild /p:Configuration=Release -r:False
 
-
-FROM mcr.microsoft.com/dotnet/framework/sdk:4.7.1
-RUN ["powershell", "Install-WindowsFeature", "-name Web-Server -IncludeManagementTools"]
-WORKDIR /lib
-COPY ./DotNet472.zip ./
-RUN ["powershell", "Expand-Archive -Path C:\\lib\\DotNet472.zip -DestinationPath C:\\lib"]
+FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.1
+# RUN ["powershell", "Install-WindowsFeature", "-name Web-Server -IncludeManagementTools"]
+# WORKDIR /lib
+# COPY ./DotNet472.zip ./
+# RUN ["powershell", "Expand-Archive -Path C:\\lib\\DotNet472.zip -DestinationPath C:\\lib"]
 # RUN "powershell -noexit goPowerranger.ps1 -DeploymentType ""Install"" -DeployMode ""Silent"""
 
 # RUN ["powershell", "-ExecutionPolicy Bypass .\Deploy-DotNet472.ps1 -DeploymentType ""Install"" -DeployMode ""NonInteractive"""]
@@ -31,10 +30,10 @@ RUN ["powershell", "Expand-Archive -Path C:\\lib\\DotNet472.zip -DestinationPath
 
 
 
-RUN dism /online /Enable-Feature /FeatureName:IIS-ISAPIFilter /all
-RUN dism /online /Enable-Feature /FeatureName:IIS-ISAPIExtensions /all
-RUN dism /online /Enable-Feature /FeatureName:IIS-NetFxExtensibility45 /all
-RUN dism /online /Enable-Feature /FeatureName:IIS-ASPNET45 /all
+# RUN dism /online /Enable-Feature /FeatureName:IIS-ISAPIFilter /all
+# RUN dism /online /Enable-Feature /FeatureName:IIS-ISAPIExtensions /all
+# RUN dism /online /Enable-Feature /FeatureName:IIS-NetFxExtensibility45 /all
+# RUN dism /online /Enable-Feature /FeatureName:IIS-ASPNET45 /all
 
 RUN ["powershell", "Remove-Item", "C:\\inetpub\\wwwroot", "-Recurse"]
 
