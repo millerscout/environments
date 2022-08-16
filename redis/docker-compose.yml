@@ -1,0 +1,24 @@
+version: '3'
+services:
+  redis:
+    container_name: redis
+    hostname: redis
+    image: "docker.io/library/redis"
+    networks:
+      - redis_network
+
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: ghcr.io/joeferner/redis-commander
+    build: .
+    restart: always
+    environment:
+    - REDIS_HOSTS=local:redis:6379
+    ports:
+    - 1235:8081
+    networks:
+      - redis_network
+networks:
+  redis_network:
+    driver: bridge
