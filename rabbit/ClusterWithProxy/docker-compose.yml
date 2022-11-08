@@ -72,6 +72,20 @@ services:
      - rabbitmq1:rabbitmq1
      - rabbitmq2:rabbitmq2
      - rabbitmq3:rabbitmq3
+  
+  perf-test:
+    image: pivotalrabbitmq/perf-test:2.18.0
+    command:
+      - --uri=amqp://mqadmin:Admin123XX_@haproxy
+      - --servers-startup-timeout=30
+      - --rate=100
+      - --producers=12
+      - --consumers=30
+      - --flag=persistent
+      - --flag=mandatory
+      - --confirm=4
+    depends_on:
+      - haproxy
  
   haproxy:
     image: haproxy:1.6
