@@ -67,3 +67,69 @@ RUN ["powershell", "Remove-Item", "C:\\inetpub\\wwwroot", "-Recurse"]
 # #WORKDIR /inetpub/wwwroot
 # #COPY --from=build /app/./sample/. ./
 # #ENTRYPOINT ["cmd"]
+
+#start
+#echo "3 frameworkps1" >> C:\asg\log.txt
+#
+##Install NetFramework
+#Install-WindowsFeature NET-Framework-45-Features
+#echo "iniciando runtime"
+#Start-Process -FilePath C:\asg\framework\dotnet-hosting-2.2.6-win.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\dotnet-runtime-2.1.13-win-x64.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\dotnet-runtime-2.2.6-win-x64.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\dotnet-runtime-2.2.6-win-x86.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\dotnet-runtime-2.2.7-win-x64.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\dotnet-runtime-2.2.7-win-x86.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\dotnet-sdk-3.0.101-win-x64.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#echo "iniciando dotnet" >> C:\asg\log.txt
+#Start-Process -FilePath C:\asg\framework\NDP451-KB2858728-x86-x64-AllOS-ENU.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\NDP452-KB2901907-x86-x64-AllOS-ENU.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\NDP46-KB3045557-x86-x64-AllOS-ENU.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\NDP461-KB3102436-x86-x64-AllOS-ENU.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\NDP462-KB3151800-x86-x64-AllOS-ENU.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\NDP47-KB3186497-x86-x64-AllOS-ENU.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\NDP471-KB4033342-x86-x64-AllOS-ENU.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\NDP472-KB4054530-x86-x64-AllOS-ENU.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\Silverlight_x64.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#Start-Process -FilePath C:\asg\framework\VC_redist.x64.exe -ArgumentList "/q /norestart" -Wait -Verb RunAs
+#
+#echo "invoke"  >> C:\asg\log.txt
+#Invoke-Command -ScriptBlock { & cmd /c "msiexec /i C:\asg\framework\WebDeploy_amd64_en-US.msi /qn"}
+#Invoke-Command -ScriptBlock { & cmd /c "msiexec /i C:\asg\framework\WebDeploy_x86_en-US.msi /quiet /qn"}
+#Invoke-Command -ScriptBlock { & cmd /c "msiexec /i C:\asg\framework\WebPlatformInstaller_x64_en-US.msi /quiet /qn"}
+#Invoke-Command -ScriptBlock { & cmd /c "msiexec /i C:\asg\framework\rewrite_x86_en-US.exe /quiet /qn"}
+#Invoke-Command -ScriptBlock { & cmd /c "msiexec /i C:\asg\framework\rewrite_amd64_en-US.exe /quiet /qn"}
+#
+#echo "4 frameworkps1" >> C:\asg\log.txt
+#
+##Install IIS Features
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-WebServerRole
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-WebServer
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-CommonHttpFeatures
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-HttpErrors
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-HttpRedirect
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-ApplicationDevelopment
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName NetFx4Extended-ASPNET45
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-NetFxExtensibility45
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-HealthAndDiagnostics
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-HttpLogging
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-LoggingLibraries
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-RequestMonitor
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-HttpTracing
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-Security
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-RequestFiltering
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-Performance
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-WebServerManagementTools
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-IIS6ManagementCompatibility
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-Metabase
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-ManagementConsole
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-BasicAuthentication
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-WindowsAuthentication
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-StaticContent
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-DefaultDocument
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-WebSockets
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-ApplicationInit
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-ISAPIExtensions
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-ISAPIFilter
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-HttpCompressionStatic
+#Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName IIS-ASPNET45

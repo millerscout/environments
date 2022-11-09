@@ -4,6 +4,8 @@ services:
     container_name: redis
     hostname: redis
     image: "docker.io/library/redis"
+    ports:
+    - 6379:6379
     networks:
       - redis_network
 

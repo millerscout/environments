@@ -36,6 +36,8 @@ FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.1
 # RUN dism /online /Enable-Feature /FeatureName:IIS-ASPNET45 /all
 
 RUN ["powershell", "Remove-Item", "C:\\inetpub\\wwwroot", "-Recurse"]
+#RUN ["powershell", "Set-WebBinding ", "-Name \"Default Web Site\" -BindingInformation \"*.80\" -PropertyName \"Port\" -Value \"15672\""]
+
 
 # WORKDIR /inetpub/build
 # COPY --from=build /app/sample/. ./
