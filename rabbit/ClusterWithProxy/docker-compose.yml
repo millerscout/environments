@@ -88,10 +88,9 @@ services:
       - haproxy
  
   haproxy:
-    image: haproxy:1.6
-    container_name: haproxy
+    build: ./
+    container_name: clusterRabbit_haproxy
     hostname: haproxy
-    command: bash -c "rabbitmq-server; rabbitmqctl stop_app; rabbitmqctl join_cluster rabbit@rabbitmq1; rabbitmqctl start_app"
     ports:
       - 5672:5672
       - 20000:20000
