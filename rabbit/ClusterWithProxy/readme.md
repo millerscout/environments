@@ -4,15 +4,6 @@
 
 run 
 
-``` on cmd
-_first-run.cmd
 ```
-
-after first run 
-
-
-you just need to start the environment via Docker or 
-
-```
-just-run.cmd
+docker-compose up
 ```
